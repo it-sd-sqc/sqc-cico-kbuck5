@@ -41,25 +41,31 @@ public class Main {
     public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
         throws BadLocationException
     {
-      if (fb.getDocument() != null) {
+      if (fb.getDocument() != null && isNumeric(stringToAdd)) {
         super.insertString(fb, offset, stringToAdd, attr);
       }
       else {
         Toolkit.getDefaultToolkit().beep();
       }
+
     }
 
     @Override
     public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
         throws BadLocationException
     {
-      if (fb.getDocument() != null) {
+      if (fb.getDocument() != null && isNumeric(stringToAdd)) {
         super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
       }
       else {
         Toolkit.getDefaultToolkit().beep();
       }
+
     }
+    private boolean isNumeric(String str){
+      return str.matches("\\d+");
+    }
+
   }
 
   // Lookup the card information after button press ///////////////////////////
