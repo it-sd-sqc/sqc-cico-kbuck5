@@ -66,6 +66,11 @@ public class Main {
       return str.matches("\\d+");
     }
 
+  }public static class Done implements ActionListener {
+    public void actionPerformed(ActionEvent evt) {
+
+      Main.doneProcessing();
+    }
   }
 
   // Lookup the card information after button press ///////////////////////////
@@ -157,6 +162,7 @@ public class Main {
 
         updateStateLabels(name, currentState == 1);
         scheduleTransitionFrom(CARD_STATE, null);
+
       }
       else {
         showError(ERROR_NOT_FOUND);
@@ -215,7 +221,7 @@ public class Main {
   }
 
   // Display name and new status //////////////////////////////////////////////
-  // Module 3 tickets: Display user name and new status. Doesn't require a
+  // Module 3 tickets: Display username and new status. Doesn't require a
   // method and can be done where this is called instead.
   private static void updateStateLabels(String name, boolean isCheckedInNow) {
     labelUser.setText(name);
@@ -297,6 +303,12 @@ public class Main {
 
     panelStatus.add(Box.createVerticalGlue());
 
+    // Add a JButton for done
+    JButton buttonDone = new JButton("Done");
+    buttonDone.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+    buttonDone.setForeground(Color.blue);
+    buttonDone.addActionListener(new Done());
+    panelStatus.add(buttonDone);
     // Error panel ////////////////////////////////////////////////////////////
     JPanel panelError = new JPanel();
     panelError.setLayout(new BoxLayout(panelError, BoxLayout.PAGE_AXIS));

@@ -69,3 +69,13 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 
 ## Expected results
 * Should make a sound and ignore the input.
+
+# Module 5-ticket 1: Add done button
+
+## Test Steps
+1. Bould and run CiCo
+2. Enter 00000000 into field and click Update.
+3. Click the done button.
+
+## Expected result
+* Should return to Main panel when done is pressed.
